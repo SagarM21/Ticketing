@@ -33,13 +33,12 @@ router.post(
     await user.save();
 
     // gen JWT
-    const secret: any = process.env.JWT_SECRET;
     const userJwt = jwt.sign(
       {
         id: user.id,
         email: user.email,
       },
-      secret
+      process.env.JWT_KEY!
     );
 
     req.session = { jwt: userJwt };

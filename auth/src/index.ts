@@ -1,4 +1,3 @@
-require("dotenv").config();
 import express from "express";
 import "express-async-errors";
 import { json } from "body-parser";
@@ -34,6 +33,7 @@ app.all("*", async (req, res) => {
 app.use(errorHandler);
 
 const start = async () => {
+  if (!process.env.JWT_KEY) throw new Error("JWT key must be defined");
   try {
     await mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
     console.log("Connected to mongo db");
