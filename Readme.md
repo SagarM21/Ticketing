@@ -5,3 +5,6 @@
 # Command used to create a image
 
 docker build -t sagarm21(Your docker id)/client(folder name) . (dot specifies current directory)
+
+- then push to kubernetes
+  docker push sagarm21/client (Be in the client directory)
