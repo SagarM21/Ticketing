@@ -9,6 +9,7 @@ import {
   NotFoundError,
 } from "@sagarm21tickets/common";
 import { createTicketRouter } from "./routes/new";
+import { showTickerRouter } from "./routes/show";
 
 const app = express();
 app.set("trust proxy", true);
@@ -21,6 +22,7 @@ app.use(
 );
 
 app.use(currentUser);
+app.use(showTickerRouter);
 app.use(createTicketRouter);
 
 app.all("*", async (req, res) => {
