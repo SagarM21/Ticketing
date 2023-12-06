@@ -14,3 +14,6 @@ docker build -t sagarm21(Your docker id)/client(folder name) . (dot specifies cu
 # Kubectl commands
 - kubectl get pods (get all the pods running)
 - kubectl delete pod POD_NAME (delete the pod)
+
+#Publish pkg on npm
+- npm publish --access public (--access public is used when you are using free account on npm)
