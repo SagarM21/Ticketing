@@ -10,12 +10,18 @@ const client = nats.connect("ticketing", randomBytes(4).toString("hex"), {
 client.on("connect", () => {
   console.log("Listener connected to NATS");
 
-  const subscription = client.subscribe("ticket:created");
+  const options = client.subscriptionOptions().setManualAckMode(true);
+  const subscription = client.subscribe(
+    "ticket:created",
+    "orders-service-queue-group",
+    options
+  );
   subscription.on("message", (msg: Message) => {
     // console.log("Message Received", msg);
     const data = msg.getData();
     if (typeof data === "string") {
       console.log(`Received event #${msg.getSequence()}, with data: ${data}`);
     }
+    msg.ack();
   });
 });
