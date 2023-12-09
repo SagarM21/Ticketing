@@ -1,5 +1,7 @@
 # Run the application
- - main dir: skaffold dev
+
+- main dir: skaffold dev
+
 # Create a Jwt secret in kubernets
 
 - kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf (asdf - your jwt signing secret)
@@ -12,8 +14,11 @@ docker build -t sagarm21(Your docker id)/client(folder name) . (dot specifies cu
   docker push sagarm21/client (Be in the client directory)
 
 # Kubectl commands
+
 - kubectl get pods (get all the pods running)
 - kubectl delete pod POD_NAME (delete the pod)
+- kubectl port-forward POD_NAME 4222:4222 (LocalMachine: kube)
 
-#Publish pkg on npm
+# Publish pkg on npm
+
 - npm publish --access public (--access public is used when you are using free account on npm)
