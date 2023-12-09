@@ -10,25 +10,16 @@ const client = nats.connect("ticketing", randomBytes(4).toString("hex"), {
 client.on("connect", () => {
   console.log("Listener connected to NATS");
 
-  const options = client
-    .subscriptionOptions()
-    .setManualAckMode(true)
-    .setDeliverAllAvailable()
-    .setDurableName("accounting-service");
-  const subscription = client.subscribe(
-    "ticket:created",
-    "queue-group-name",
-    options
-  );
-  subscription.on("message", (msg: Message) => {
-    // console.log("Message Received", msg);
-    const data = msg.getData();
-    if (typeof data === "string") {
-      console.log(`Received event #${msg.getSequence()}, with data: ${data}`);
-    }
-    msg.ack();
+  client.on("close", () => {
+    console.log("NATS connection closed!");
+    process.exit();
   });
+
+  new TicketCreatedListener(client).listen();
 });
+
+process.on("SIGINT", () => client.close());
+process.on("SIGTERM", () => client.close());
 
 abstract class Listener {
   abstract subject: string;
@@ -70,5 +61,14 @@ abstract class Listener {
     return typeof data === "string"
       ? JSON.parse(data)
       : JSON.parse(data.toString("utf-8"));
+  }
+}
+
+class TicketCreatedListener extends Listener {
+  subject = "ticket:created";
+  queueGroupName = "payments-service";
+  onMessage(data: any, msg: Message) {
+    console.log("Event Data", data);
+    msg.ack();
   }
 }
