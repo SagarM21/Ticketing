@@ -6,7 +6,7 @@ const client = nats.connect("ticketing", "abc", {
   url: "http://localhost:4222",
 });
 
-client.on("connect", () => {
+client.on("connect", async () => {
   console.log("Publisher connected to NATS");
 
   client.on("close", () => {
@@ -15,11 +15,16 @@ client.on("connect", () => {
   });
 
   const publisher = new TicketCreatedPublisher(client);
-  publisher.publish({
-    id: "123",
-    title: "concert",
-    price: 20,
-  });
+  try {
+    await publisher.publish({
+      id: "123",
+      title: "concert",
+      price: 20,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+
   // const data = JSON.stringify({
   //   id: "123",
   //   title: "concert",
