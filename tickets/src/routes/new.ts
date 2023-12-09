@@ -2,6 +2,7 @@ import { requireAuth, validateRequest } from "@sagarm21tickets/common";
 import { body } from "express-validator";
 import express, { Request, Response } from "express";
 import { Ticket } from "../models/ticket";
+import { TicketCreatedPublisher } from "../events/publisher/ticket-created-publisher";
 const router = express.Router();
 
 router.post(
@@ -19,6 +20,12 @@ router.post(
 
     const ticket = Ticket.build({ title, price, userId: req.currentUser!.id });
     await ticket.save();
+    new TicketCreatedPublisher(client).publish({
+      id: ticket.id,
+      title: ticket.title,
+      price: ticket.price,
+      userId: ticket.userId,
+    });
     res.status(201).send(ticket);
   }
 );
