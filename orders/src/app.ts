@@ -8,10 +8,10 @@ import {
   errorHandler,
   NotFoundError,
 } from "@sagarm21tickets/common";
-import { showOrderRouter } from "../routes/show";
-import { indexOrderRouter } from "../routes";
-import { deleteOrderRouter } from "../routes/delete";
-import { newOrderRouter } from "../routes/new";
+import { showOrderRouter } from "./routes/show";
+import { indexOrderRouter } from "./routes";
+import { deleteOrderRouter } from "./routes/delete";
+import { newOrderRouter } from "./routes/new";
 
 const app = express();
 app.set("trust proxy", true);
