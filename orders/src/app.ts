@@ -8,10 +8,10 @@ import {
   errorHandler,
   NotFoundError,
 } from "@sagarm21tickets/common";
-import { createTicketRouter } from "./routes/new";
-import { showTickerRouter } from "./routes/show";
-import { indexTicketRouter } from "./routes";
-import { updateTicketRouter } from "./routes/update";
+import { showOrderRouter } from "../routes/show";
+import { indexOrderRouter } from "../routes";
+import { deleteOrderRouter } from "../routes/delete";
+import { newOrderRouter } from "../routes/new";
 
 const app = express();
 app.set("trust proxy", true);
@@ -24,10 +24,10 @@ app.use(
 );
 
 app.use(currentUser);
-app.use(showTickerRouter);
-app.use(createTicketRouter);
-app.use(indexTicketRouter);
-app.use(updateTicketRouter);
+app.use(showOrderRouter);
+app.use(indexOrderRouter);
+app.use(deleteOrderRouter);
+app.use(newOrderRouter);
 
 app.all("*", async (req, res) => {
   throw new NotFoundError();
