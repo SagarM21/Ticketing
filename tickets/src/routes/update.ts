@@ -28,7 +28,7 @@ router.put(
     if (ticket.userId !== req.currentUser!.id) throw new NotAuthorizedError();
 
     ticket.set({
-      title: req.body.tile,
+      title: req.body.title,
       price: req.body.price,
     });
     await ticket.save();
@@ -37,6 +37,7 @@ router.put(
       title: ticket.title,
       price: ticket.price,
       userId: ticket.userId,
+      version: ticket.version,
     });
     res.send(ticket);
   }
