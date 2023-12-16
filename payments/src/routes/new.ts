@@ -35,7 +35,7 @@ router.post(
       payment_method_types: ["card"],
     });
 
-    res.send({ success: true });
+    res.status(201).send({ success: true });
   }
 );
 
