@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sagarm21tickets/common": "1.0.9",
+    "@sagarm21tickets/common": "1.0.10",
     "@types/bull": "^4.10.0",
     "bull": "^4.11.5",
     "node-nats-streaming": "^0.3.2",
