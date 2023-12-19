@@ -1,24 +1,64 @@
+<h1 align="center" style="font-size: 5rem;">
+MicroServices Project
+</h1>
+
 # Run the application
 
-- main dir: skaffold dev
+```bash
+Run the below command in main directory of project
+skaffold dev
+```
 
-# Create a Jwt secret in kubernets
+## Some Common Commands used in project
 
-- kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf (asdf - your jwt signing secret)
+Create a Jwt secret in kubernetes:
 
-# Command used to create a image
+```bash
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf (asdf - your jwt signing secret)
+```
 
-docker build -t sagarm21(Your docker id)/client(folder name) . (dot specifies current directory)
+Command used to create a image:
 
-- then push to kubernetes
-  docker push sagarm21/client (Be in the client directory)
+```bash
+docker build -t DOCKER_USERNAME/FOLDER_NAME . (dot specifies current directory)
 
-# Kubectl commands
+Example:
+docker build -t DOCKER_USERNAME/client .
 
-- kubectl get pods (get all the pods running)
-- kubectl delete pod POD_NAME (delete the pod)
-- kubectl port-forward POD_NAME 4222:4222 (LocalMachine: kube)
+## Push it to kubernetes - Run the command in the respective Folder
+docker push DOCKER_USERNAME/FOLDER_NAME
+```
 
-# Publish pkg on npm
+Kubectl commands
 
-- npm publish --access public (--access public is used when you are using free account on npm)
+```bash
+# Get all the running pods
+kubectl get pods
+
+# Delete respective pod
+kubectl delete pod POD_NAME
+
+# Port Forwarding command
+kubectl port-forward POD_NAME 4222:4222 (LocalMachinePort: kube)
+```
+
+Publish pkg on npm
+
+```bash
+# --access public is used when you are using free account on npm
+npm publish --access public
+
+# To re-publish the common package
+cd common
+npm run pub
+```
+
+### Link to the common package:
+
+<div align="center">
+<span>GitHub: <a href="https://github.com/SagarM21/sagarm21tickets-common">Common-Ticketing-Package</a>
+</span>
+<br />
+<span>NPM: <a href="https://www.npmjs.com/package/@sagarm21tickets/common">
+NPM Link </a> </span>
+</div>
