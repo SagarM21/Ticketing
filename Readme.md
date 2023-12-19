@@ -62,3 +62,8 @@ npm run pub
 <span>NPM: <a href="https://www.npmjs.com/package/@sagarm21tickets/common">
 NPM Link </a> </span>
 </div>
+
+### Demo Video
+https://github.com/SagarM21/Ticketing/assets/72984307/c08613cc-955c-42ae-b7c8-3375c3bca730
+
+
