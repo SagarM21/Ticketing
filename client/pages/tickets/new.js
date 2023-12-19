@@ -52,7 +52,7 @@ const NewTicket = () => {
           />
         </div>
         {errors}
-        <button className="btn btn-primary">Submit</button>
+        <button className="btn btn-primary mt-2">Submit</button>
       </form>
     </div>
   );
