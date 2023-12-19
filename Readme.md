@@ -25,7 +25,7 @@ docker build -t DOCKER_USERNAME/FOLDER_NAME . (dot specifies current directory)
 Example:
 docker build -t DOCKER_USERNAME/client .
 
-## Push it to kubernetes - Run the command in the respective Folder
+# Push it to kubernetes - Run the command in the respective Folder
 docker push DOCKER_USERNAME/FOLDER_NAME
 ```
 
@@ -56,9 +56,9 @@ npm run pub
 ### Link to the common package:
 
 <div align="center">
-<span>GitHub: <a href="https://github.com/SagarM21/sagarm21tickets-common">Common-Ticketing-Package</a>
+<span style="margin-bottom: 20px;">GitHub: <a href="https://github.com/SagarM21/sagarm21tickets-common">Common-Ticketing-Package</a>
 </span>
-<br />
+
 <span>NPM: <a href="https://www.npmjs.com/package/@sagarm21tickets/common">
 NPM Link </a> </span>
 </div>
