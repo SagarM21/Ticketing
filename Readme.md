@@ -5,7 +5,7 @@ MicroServices Project
 # Run the application
 
 ```bash
-Run the below command in main directory of project
+# Run the below command in main directory of project
 skaffold dev
 ```
 
